@@ -58,6 +58,7 @@ request.interceptors.response.use(function (response) {
   // 1. 结构出 data 以后，只能证明这次请求完成了，但是具体有没有成功， 不知道
   // 2. 咱们可以判断 data.code 是否等于 0，来知晓是否成功
   const { data } = response
+  console.log('response', response)
   if (data.code === 0) {
     // 这次业务成功啦
     return response

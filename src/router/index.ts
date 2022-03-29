@@ -19,7 +19,8 @@ const routes: Array<RouteConfig> = [
       // 1. 完整写法：父 + 子
       // 2. 简化写法：子，同时子路由的 path 不能以 / 开头
       { path: 'home', component: () => import('@/views/Home/Home.vue') },
-      { path: 'user-info', component: () => import('@/views/User/UserInfo.vue') }
+      { path: 'user-info', component: () => import('@/views/User/UserInfo.vue') },
+      { path: 'user-avatar', component: () => import('@/views/User/UserAvatar.vue') }
     ]
   },
   // 添加 * 所表示的通配符路由规则，表示如果输入的路径，在上面匹配不到要展示的组件，
