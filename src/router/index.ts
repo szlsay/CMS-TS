@@ -4,7 +4,8 @@ import VueRouter, { RouteConfig } from 'vue-router'
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
-
+  { path: '/reg', component: () => import('@/views/Reg/Reg.vue') },
+  { path: '/login', component: () => import('@/views/Login/Login.vue') }
 ]
 
 const router = new VueRouter({
