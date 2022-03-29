@@ -120,7 +120,7 @@ export default class Reg extends Vue {
       if (!valid) return
       // TODO：明天，我们一起实现接口的调用
       console.log('可以发起请求啦')
-      const res = await request.post<ApiResponse<string>>('/api/reg', this.regForm)
+      const res = await request.post('/api/reg', this.regForm)
       // await 后面，写的代码，永远都是成功之后的操作
       // 相当于把 await 后面的所有代码，
       // 写到了 .then(fn1, fn2) 的 fn1 成功回调函数中

@@ -25,7 +25,7 @@
         </el-form-item>
         <!-- 注册按钮的 item 项 -->
         <el-form-item>
-          <el-button type="primary" style="width: 100%">登录</el-button>
+          <el-button type="primary" style="width: 100%" @click="login">登录</el-button>
           <!-- $router 是路由导航对象，里面提供了编程式导航的各种 API 函数 -->
           <el-link type="info" @click="$router.push('/reg')">去注册</el-link>
         </el-form-item>
@@ -35,7 +35,10 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import { Form } from 'element-ui'
 import type { LoginForm } from '@/types/login'
+// 导入封装好的 axios 模块
+import request from '@/utils/request'
 @Component({})
 export default class Login extends Vue {
   // 登录表单的数据对象
@@ -58,6 +61,23 @@ export default class Login extends Vue {
       // 正则验证
       { pattern: /^\S{6,15}$/, message: '密码必须是6-15位的非空字符', trigger: 'blur' }
     ]
+  };
+
+  // 点击按钮，进行登录
+  login (): void {
+    // 1. 对登录表单进行数据校验
+    // 2. 校验通过后，封装并调用登录的 API 接口
+    (this.$refs.loginFormRef as Form).validate(async valid => {
+      if (!valid) return
+      const result = await request.post('/api/login', this.loginForm)
+      // 1. 提示用户登录成功
+      this.$message.success(result.data.message)
+      // 2. 保存 token
+      // this.$store.commit('模块的注册名称/要调用的函数', 参数)
+      this.$store.commit('user/updateToken', result.data.token)
+      // 3. 基于编程式导航的 API 跳转到后台主页 /
+      this.$router.push('/')
+    })
   }
 }
 </script>
