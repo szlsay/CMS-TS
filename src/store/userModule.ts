@@ -1,6 +1,7 @@
 import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators'
 import request from '@/utils/request'
-@Module({ namespaced: true, name: 'user' })
+import store from '@/store'
+@Module({ namespaced: true, name: 'user', store })
 export default class UserModule extends VuexModule {
   // 登录成功之后的 token
   token = ''
@@ -21,11 +22,17 @@ export default class UserModule extends VuexModule {
     this.info = info
   }
 
-  // 异步操作
-  @Action
-  async initUserInfo () {
-    const result = await request.get('/my/userinfo')
-    console.log(result)
-    this.context.commit('updateInfo', result.data)
-  }
+  // // 异步操作
+  // @Action
+  // async initUserInfo () {
+  //   const result = await request.get('/my/userinfo')
+  //   this.context.commit('updateInfo', result.data)
+  // }
+
+  // // 异步操作 rawError: true
+  // @Action({ commit: 'updateInfo' })
+  // async initUserInfo () {
+  //   const result = await request.get('/my/userinfo')
+  //   return result.data
+  // }
 }

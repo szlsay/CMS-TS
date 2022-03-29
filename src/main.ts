@@ -14,7 +14,6 @@ Vue.config.productionTip = false
 // 把 elementUI 安装为 Vue 的插件
 // 在每个 .vue 的组件中，可以直接使用 element 提供的组件啦
 Vue.use(ElementUI)
-
 new Vue({
   router,
   store,
