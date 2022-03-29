@@ -66,7 +66,7 @@ request.interceptors.response.use(function (response) {
     // 1. 提示错误消息
     Message.error(data.message)
     // 2. 把这次 axios 请求标记为失败
-    return Promise.reject(new Error(data.message))
+    return Promise.reject(new Error(data.message + data.code))
   }
 }, function (error) {
   // 响应失败，也需要隐藏 loading
