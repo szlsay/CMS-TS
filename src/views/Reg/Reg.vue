@@ -39,7 +39,7 @@
         </el-form-item>
         <!-- 注册按钮的 item 项 -->
         <el-form-item>
-          <el-button type="primary" style="width: 100%">注册</el-button>
+          <el-button type="primary" style="width: 100%" @click="reg">注册</el-button>
           <!-- $router 是路由导航对象，里面提供了编程式导航的各种 API 函数 -->
           <el-link type="info" @click="$router.push('/login')">去登录</el-link>
         </el-form-item>
@@ -50,7 +50,11 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import { Form } from 'element-ui'
 import type { RegForm } from '@/types/reg'
+// 导入封装好的 axios 模块
+import request from '@/utils/request'
+import type { ApiResponse } from '@/types/data'
 @Component({})
 export default class Reg extends Vue {
   // 注册的表单数据，将来我们会把 regForm 作为请求体，提交给服务器
@@ -103,6 +107,29 @@ export default class Reg extends Vue {
       }
     ]
   };
+
+  // 点击注册按钮，进行新用户的注册
+  reg (): void{
+    // 1. 对整个表单数据，进行合法性校验
+    // 2. 步骤1校验通过后，再调用接口，发起注册的请求
+    // 一次性校验表单中的所有数据
+    // this.$refs.引用名称.validate(fn)
+    (this.$refs.regFormRef as Form).validate(async (valid: boolean) => {
+      // 如果 valid 是 true，表示校验通过
+      // 如果 valid 是 false，表示校验失败
+      if (!valid) return
+      // TODO：明天，我们一起实现接口的调用
+      console.log('可以发起请求啦')
+      const res = await request.post<ApiResponse<string>>('/api/reg', this.regForm)
+      // await 后面，写的代码，永远都是成功之后的操作
+      // 相当于把 await 后面的所有代码，
+      // 写到了 .then(fn1, fn2) 的 fn1 成功回调函数中
+      // 1. 提示用户注册成功啦
+      this.$message.success(res.data.message)
+      // 2. 自动跳转到登录页面
+      this.$router.push('/login')
+    })
+  }
 }
 </script>
 
