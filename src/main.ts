@@ -7,10 +7,10 @@ import store from './store'
 import ElementUI from 'element-ui'
 // 导入富文本编辑器的插件和配套的样式
 import VueQuillEditor from 'quill-vuejs'
-import 'quill/dist/quill.core.css' // import styles
-import 'quill/dist/quill.snow.css' // for snow theme
-import 'quill/dist/quill.bubble.css' // for bubble theme
-import 'element-ui/lib/theme-chalk/index.css'
+// import 'quill/dist/quill.core.css' // import styles
+// import 'quill/dist/quill.snow.css' // for snow theme
+// import 'quill/dist/quill.bubble.css' // for bubble theme
+// import 'element-ui/lib/theme-chalk/index.css'
 
 import dayjs from 'dayjs'
 
