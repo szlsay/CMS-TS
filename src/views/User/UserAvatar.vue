@@ -28,7 +28,6 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import type { ApiResponse } from '@/types/data'
 import request from '@/utils/request'
 @Component({})
 export default class UserAvatar extends Vue {

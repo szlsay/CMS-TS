@@ -20,6 +20,7 @@ const routes: Array<RouteConfig> = [
       // 2. 简化写法：子，同时子路由的 path 不能以 / 开头
       { path: 'home', component: () => import('@/views/Home/Home.vue') },
       { path: 'user-info', component: () => import('@/views/User/UserInfo.vue') },
+      { path: 'user-pwd', component: () => import('@/views/User/UserPwd.vue') },
       { path: 'user-avatar', component: () => import('@/views/User/UserAvatar.vue') }
     ]
   },
