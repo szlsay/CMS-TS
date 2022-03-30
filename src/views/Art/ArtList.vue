@@ -40,7 +40,7 @@
         <!-- 意思是：把对应数据项的名字，传递给 el-table-column 组件 -->
         <!-- 在每个 el-table-column 中，要想拿到当前行的数据，通过作用域插槽来拿 -->
         <el-table-column label="发表时间">
-          <template v-slot="{ row }">{{ row.pub_date }}</template>
+          <template v-slot="{ row }">{{ row.pub_date | dateFormat}}</template>
         </el-table-column>
         <el-table-column label="状态">
           <template v-slot="{ row }">
@@ -116,7 +116,7 @@
 
       <div class="info">
         <span>作者：{{ artDetail.nickname || artDetail.username }}</span>
-        <span>发布时间：{{ artDetail.pub_date }}</span>
+        <span>发布时间：{{ artDetail.pub_date | dateFormat }}</span>
         <span>所属分类：{{ artDetail.cate_name }}</span>
         <span>状态：{{ artDetail.state }}</span>
       </div>
@@ -340,7 +340,7 @@ export default class ArtList extends Vue {
   // 获取文章详情数据
   async initArtDetail (id:string) {
     const result = await request.get('/my/article/info?id=' + id)
-    this.artDetail = result.data
+    this.artDetail = result.data.data
     this.detailVisible = true
   }
 
