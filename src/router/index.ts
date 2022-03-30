@@ -21,7 +21,8 @@ const routes: Array<RouteConfig> = [
       { path: 'home', component: () => import('@/views/Home/Home.vue') },
       { path: 'user-info', component: () => import('@/views/User/UserInfo.vue') },
       { path: 'user-pwd', component: () => import('@/views/User/UserPwd.vue') },
-      { path: 'user-avatar', component: () => import('@/views/User/UserAvatar.vue') }
+      { path: 'user-avatar', component: () => import('@/views/User/UserAvatar.vue') },
+      { path: 'art-cate', component: () => import('@/views/Art/ArtCate.vue') }
     ]
   },
   // 添加 * 所表示的通配符路由规则，表示如果输入的路径，在上面匹配不到要展示的组件，
