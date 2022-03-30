@@ -1,6 +1,7 @@
 import { Module, VuexModule, Mutation, MutationAction } from 'vuex-module-decorators'
 import request from '@/utils/request'
 import store from '@/store'
+import type { UserInfo } from '@/types/user'
 @Module({ namespaced: true, name: 'user', store })
 export default class UserModule extends VuexModule {
   // 登录成功之后的 token
@@ -18,7 +19,7 @@ export default class UserModule extends VuexModule {
   // 更新 state 中 info 的数据
   // 形参中的 obj 就是 Ajax 请求回来的用户信息对象
   @Mutation
-  updateInfo (info: any) {
+  updateInfo (info: UserInfo) {
     this.info = info
   }
 
