@@ -66,7 +66,7 @@
     <p>customVisible 的值是：{{ customVisible }}</p>
     <el-button type="primary" size="mini" @click="customVisible = true">展示自定义的对话框</el-button>
     <!-- 3. 使用自定义的子组件 -->
-    <!-- <MyDialog :visible.sync="customVisible"></MyDialog> -->
+    <MyDialog :visible.sync="customVisible"></MyDialog>
   </div>
 </template>
 <script lang="ts">
@@ -74,7 +74,13 @@ import { Vue, Component } from 'vue-property-decorator'
 import request from '@/utils/request'
 import { Form } from 'element-ui'
 import type { AddForm, EditForm } from '@/types/art'
-@Component({})
+// 1. 导入自定义的组件
+import MyDialog from '@/components/MyDialog.vue'
+@Component({
+  components: {
+    MyDialog
+  }
+})
 export default class ArtCate extends Vue {
   // 默认隐藏自定义的对话框
   customVisible = false
