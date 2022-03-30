@@ -66,13 +66,7 @@ export default class UserAvatar extends Vue {
     // 提示用户成功了
     this.$message.success(result.data.message)
     // 调用 actions 函数，刷新全局的用户信息
-    // this.$store.dispatch('user/initUserInfo')
-    this.initUserInfo()
-  }
-
-  async initUserInfo () {
-    const { data } = await request.get('/my/userinfo')
-    this.$store.commit('user/updateInfo', data.data)
+    this.$store.dispatch('user/initUserInfo')
   }
 }
 </script>

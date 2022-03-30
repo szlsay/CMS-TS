@@ -78,14 +78,8 @@ export default class UserInfo extends Vue {
       this.$message.success(result.data.message)
       // 刷新页面上用户的数据
       // 要做的事儿：调用全局的、获取用户信息的 actions 函数即可
-      // this.$store.dispatch('user/initUserInfo')
-      this.initUserInfo()
+      this.$store.dispatch('user/initUserInfo')
     })
-  }
-
-  async initUserInfo () {
-    const { data } = await request.get('/my/userinfo')
-    this.$store.commit('user/updateInfo', data.data)
   }
 }
 </script>

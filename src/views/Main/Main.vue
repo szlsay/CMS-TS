@@ -111,15 +111,9 @@ export default class Main extends Vue {
 
   created () {
     // 调用 vuex 中的 actions 函数，获取用户的基本信息
-    // this.$store.dispatch('user/initUserInfo')
-    this.initUserInfo()
+    this.$store.dispatch('user/initUserInfo')
     // 调用 methods 里面的 initMenus 函数，发请求获取菜单数据
     this.initMenus()
-  }
-
-  async initUserInfo () {
-    const { data } = await request.get('/my/userinfo')
-    this.$store.commit('user/updateInfo', data.data)
   }
 
   // 初始化左侧菜单的列表数据

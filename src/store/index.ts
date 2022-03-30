@@ -8,6 +8,7 @@ import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  state: {},
   // 安装给 vuex 的插件
   plugins: [createPersistedState()],
   modules: {
