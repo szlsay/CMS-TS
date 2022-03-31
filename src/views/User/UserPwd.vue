@@ -49,7 +49,7 @@ export default class UserPwd extends Vue {
       { pattern: /^\S{6,15}$/, message: '密码必须是6-15位的非空字符', trigger: 'blur' },
       // 自定义校验规则：新密码的值，不能和原密码一样
       {
-        validator: (rule:any, value:string, cb:any) => {
+        validator: (rule:any, value:string, cb: (flag: Error | void) => void) => {
           // 拿着“新密码”和“原密码”的值，进行等号的判断
           // 1. 如果相等，应该报错
           // 2. 如果不相等，校验通过
@@ -69,7 +69,7 @@ export default class UserPwd extends Vue {
       { pattern: /^\S{6,15}$/, message: '密码必须是6-15位的非空字符', trigger: 'blur' },
       // 自定义校验规则：两次新密码必须一样
       {
-        validator: (rule:any, value:string, cb:any) => {
+        validator: (rule:any, value:string, cb: (flag: Error | void) => void) => {
           // 如果两次新密码一样了，则校验通过
           // 如果两次新密码不一样，则报错
           if (value === this.form.new_pwd) {

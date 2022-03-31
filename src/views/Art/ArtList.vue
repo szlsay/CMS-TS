@@ -226,7 +226,7 @@ export default class ArtList extends Vue {
   }
 
   // 关闭之前的处理函数，可以询问用户是否确认关闭
-  async handleClose (done:any) {
+  async handleClose (done: (flag: boolean | void) => void) {
     const result = await this.$confirm('此操作将导致文章信息丢失, 是否继续?', '提示', {
       confirmButtonText: '确定',
       cancelButtonText: '取消',

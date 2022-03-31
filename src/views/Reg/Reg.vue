@@ -95,7 +95,7 @@ export default class Reg extends Vue {
       // { validator: 自定义的校验规则, trigger: 触发校验的时机 }
       // { validator: samePwd, trigger: 'blur' }
       {
-        validator: (rule:any, value:string, cb: any) => {
+        validator: (rule:any, value:string, cb: (flag: Error | void) => void) => {
           if (value === this.regForm.password) {
             // 两次密码一致，校验通过
             cb()
